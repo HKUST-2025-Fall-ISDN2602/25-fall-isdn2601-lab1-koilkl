@@ -28,9 +28,9 @@ void setup() {
     // c=  c_value;//calculate the voltage at the node for current calcultion  
     x = (c_value-Vout_value)*3.3f*1000.0f/(4095.0f*22000.0f); // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
     y =  float(Vout_value)*3.3f*1000.f/4095.0f; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
-    Serial.print(float(x)); 
+    Serial.print(float(-x)); 
     Serial.print(","); // seperate values by comma 
-    Serial.println(float(y));
+    Serial.println(float(-y));
   }
 
   // Press reset button for a new sweep
