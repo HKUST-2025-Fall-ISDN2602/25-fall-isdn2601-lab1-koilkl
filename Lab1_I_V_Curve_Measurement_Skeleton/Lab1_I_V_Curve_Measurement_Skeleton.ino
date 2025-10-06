@@ -7,12 +7,9 @@
 float R = 2000; //*** Resistance in Mohm ***
 
 float x;
-<<<<<<< Updated upstream
 float y;
 // float c;
-=======
-int y;
->>>>>>> Stashed changes
+
 
 void setup() {
 
@@ -30,19 +27,11 @@ void setup() {
     int Vout_value = analogRead(Vout); // read the voltage level at Vout 
     int c_value = analogRead(Cal); // read the voltage level at the node for current calcultion  
     // c=  c_value;//calculate the voltage at the node for current calcultion  
-<<<<<<< Updated upstream
-    x = (c_value-Vout_value)*3.3f*1000.0f/(4095.0f*22000.0f); // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
+    x = float(c_value-Vout_value)*3.3f*1000000.0f/(4095.0f*22000.0f); // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
     y =  float(Vout_value)*3.3f*1000.f/4095.0f; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
-    Serial.print(float(-x)); 
-    Serial.print(","); // seperate values by comma 
-    Serial.println(float(-y));
-=======
-    x = float(onPeriod)*100/255.0f ; // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
-    y =  Vout_value; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
     Serial.print(float(x)); 
-    Serial.print("%,"); // seperate values by comma 
+    Serial.print(","); // seperate values by comma 
     Serial.println(float(y));
->>>>>>> Stashed changes
   }
 
   // Press reset button for a new sweep
