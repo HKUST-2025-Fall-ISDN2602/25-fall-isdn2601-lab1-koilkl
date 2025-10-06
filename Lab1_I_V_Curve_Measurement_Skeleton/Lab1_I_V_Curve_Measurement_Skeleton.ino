@@ -1,10 +1,10 @@
 #include "Arduino.h"
 
-#define Vin 12 //*** Define the GPIO pin 12 as Vin ***
+#define Vin 2 //*** Define the GPIO pin 12 as Vin ***
 #define Vout 32  //*** Define the GPIO pin 27 as Vout ***
-#define Cal 14 //*** Define the GPIO pin 14 as the node for current calcultion ***
+#define Cal 14  //*** Define the GPIO pin 14 as the node for current calcultion ***
 
-float R = 2000; //*** Resistance in Mohm ***
+float R = 2; //*** Resistance in Mohm ***
 
 float x;
 float y;
@@ -27,8 +27,9 @@ void setup() {
     int Vout_value = analogRead(Vout); // read the voltage level at Vout 
     int c_value = analogRead(Cal); // read the voltage level at the node for current calcultion  
     // c=  c_value;//calculate the voltage at the node for current calcultion  
-    x = float(c_value-Vout_value)*3.3f*1000000.0f/(4095.0f*22000.0f); // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
-    y =  float(Vout_value)*3.3f*1000.f/4095.0f; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
+
+    y =  float(Vout_value*1000)*3.3f/4095.0f; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
+        x =y/R; // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
     Serial.print(float(x)); 
     Serial.print(","); // seperate values by comma 
     Serial.println(float(y));
