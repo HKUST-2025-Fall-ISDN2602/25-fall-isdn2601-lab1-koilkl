@@ -1,7 +1,7 @@
 #include "Arduino.h"
 
 #define Vin 12 //*** Define the GPIO pin 12 as Vin ***
-#define Vout 27  //*** Define the GPIO pin 27 as Vout ***
+#define Vout 32  //*** Define the GPIO pin 27 as Vout ***
 #define Cal 14 //*** Define the GPIO pin 14 as the node for current calcultion ***
 
 float R = 2000; //*** Resistance in Mohm ***
