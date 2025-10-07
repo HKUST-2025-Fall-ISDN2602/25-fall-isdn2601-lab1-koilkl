@@ -31,9 +31,10 @@ void setup() {
     c=(c-y);
     y=y*1000.0;
     x =c/R; // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
-    Serial.print(float(y)); 
+    Serial.print(-float(y)); 
     Serial.print(","); // seperate values by comma 
-    Serial.println(float(x));
+    Serial.println(-float(x));
+    delay(2);
   }
 
   // Press reset button for a new sweep
