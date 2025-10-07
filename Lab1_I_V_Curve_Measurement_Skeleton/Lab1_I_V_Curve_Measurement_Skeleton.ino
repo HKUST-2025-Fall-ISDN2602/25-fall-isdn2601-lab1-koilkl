@@ -4,11 +4,11 @@
 #define Vout 32  //*** Define the GPIO pin 27 as Vout ***
 #define Cal 14  //*** Define the GPIO pin 14 as the node for current calcultion ***
 
-float R = 2; //*** Resistance in Mohm ***
+float R = 0.022; //*** Resistance in Mohm ***
 
 float x;
 float y;
-// float c;
+float c;
 
 
 void setup() {
@@ -26,13 +26,14 @@ void setup() {
     analogWrite(Vin ,onPeriod);// Output PWM at Vin      
     int Vout_value = analogRead(Vout); // read the voltage level at Vout 
     int c_value = analogRead(Cal); // read the voltage level at the node for current calcultion  
-    // c=  c_value;//calculate the voltage at the node for current calcultion  
-
-    y =  float(Vout_value*1000)*3.3f/4095.0f; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
-        x =y/R; // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
-    Serial.print(float(x)); 
+     c=float(c_value)/4095.0*3.3;//calculate the voltage at the node for current calcultion  
+    y =  float(Vout_value)/4095.0*3.3; // calculate the voltage at Vout in V for TASK 1 or current in uA for Task 2 3 4
+    c=(c-y);
+    y=y*1000.0;
+    x =c/R; // calculate duty cycle for TASK 1 or the voltage at Vout in mV for Task 2 3 4
+    Serial.print(float(y)); 
     Serial.print(","); // seperate values by comma 
-    Serial.println(float(y));
+    Serial.println(float(x));
   }
 
   // Press reset button for a new sweep
